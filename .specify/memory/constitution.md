@@ -1,14 +1,15 @@
 <!--
 Sync Impact Report
-- Version change: (template placeholders) → 1.0.0
-- Modified principles: N/A（首次从模板落地为 Paperize 专用条文）
-- Added sections: 技术栈与工程约束；禁止事项、隐私与调试；成功标准（MVP）
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: 无标题重命名；条文未改，Governance 增补需求工件约定
+- Added sections: Governance 内「需求工件」段落（specs 下 spec.md 为产品需求权威）
 - Removed sections: 无
+- 新增制品: specs/001-paperize-mvp/spec.md（产品需求规格说明，与宪法互补）
 - Templates requiring updates:
-  - .specify/templates/plan-template.md ✅ Constitution Check 已对齐 Paperize
-  - .specify/templates/spec-template.md ✅ 增加 Paperize 语境下的离线/隐私提示
-  - .specify/templates/tasks-template.md ✅ Path Conventions 增加 Paperize 包结构提示
-  - .specify/templates/commands/*.md ⚠ 目录不存在或无可更新文件，跳过
+  - .specify/templates/plan-template.md ✅ Constitution Check 增补「规格对齐」门禁
+  - .specify/templates/spec-template.md ✅ 未改
+  - .specify/templates/tasks-template.md ✅ 未改
+  - .specify/templates/commands/*.md ⚠ 仍无可更新文件
 - Follow-up TODOs: 无
 -->
 
@@ -71,6 +72,8 @@ Cleaner 架构 MUST 支持通过 `match()` 判断是否适用、`clean()` 返回
 
 本宪法优先于与之冲突的临时约定或口头习惯。任何修订 MUST：更新本文件正文、按语义化版本规则递增文末版本号、将 `Last Amended` 更新为修订当日（ISO `YYYY-MM-DD`），并在文件顶部 Sync Impact Report 中记录原则与模板联动情况。MAJOR 表示治理原则删除或向后不兼容重定义；MINOR 表示新增原则或实质性扩展指导；PATCH 表示措辞澄清与非语义修订。
 
-合并请求与实现审查 SHOULD 核对：中文用户文案、只读源与输出策略、分层与资源目录约定、离线/隐私边界、以及 Constitution Check（见 `.specify/templates/plan-template.md`）所列门禁。
+**需求工件**：产品范围、用户故事、功能/非功能需求与可验收标准，以本仓库 `specs/<编号>-<特性名>/spec.md` 中经评审通过的版本为权威说明；本宪法约束工程治理与架构边界。二者若冲突，MUST 先修订规格或宪法之一并记录理由，不得静默偏离。
 
-**Version**: 1.0.0 | **Ratified**: 2026-05-14 | **Last Amended**: 2026-05-14
+合并请求与实现审查 SHOULD 核对：中文用户文案、只读源与输出策略、分层与资源目录约定、离线/隐私边界、Constitution Check（见 `.specify/templates/plan-template.md`）所列门禁，以及当前特性对应的 `spec.md` 验收场景。
+
+**Version**: 1.1.0 | **Ratified**: 2026-05-14 | **Last Amended**: 2026-05-14

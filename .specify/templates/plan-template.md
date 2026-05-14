@@ -48,6 +48,7 @@ Verify alignment with `.specify/memory/constitution.md` (Paperize):
 - **清洗优先与分层**: 是否将 DOM 结构清洗置于注入打印 CSS 之前；是否避免巨型 `main.py`；打印样式是否规划在 `assets/styles/`（而非硬编码于 Python 长字符串）。
 - **扩展与跨平台**: Cleaner 是否可按 `match()` / `clean()` 演进；路径是否基于 `pathlib`；是否考虑 macOS/Windows/Docker 与中文文件名。
 - **打印目标与 MVP**: 默认 A4、正文优先、背景简洁；是否接受对极端页面「失败但日志清晰」，并避免第一版引入 Web 服务或过度通用爬虫式兼容。
+- **规格对齐**: 本特性的 `plan.md` / `tasks.md` 是否可追溯至 `/specs/[###-feature-name]/spec.md` 中的用户故事、FR/NFR 与验收场景（见宪法 Governance「需求工件」）。
 
 ## Project Structure
 
