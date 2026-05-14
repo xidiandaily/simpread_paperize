@@ -21,7 +21,6 @@ _REMOVE_TAG_NAMES = frozenset(
         "sr-snapshot-ctlbar",
         "simpread-feedback",
         "simpread-urlscheme",
-        "sr-rd-mult-avatar",
         "script",
         "iframe",
     }
@@ -38,6 +37,35 @@ def _find_first_tag(soup: BeautifulSoup, name: str) -> Tag | None:
 
 def _normalize_ws(text: str) -> str:
     return re.sub(r"\s+", " ", text or "").strip()
+
+
+def _normalize_author_display(text: str) -> str:
+    """简悦聚合回答中 sr-rd-mult-avatar 内的昵称（去掉零宽字符与多余空白）。"""
+    t = (text or "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "").replace("\ufeff", "")
+    return _normalize_ws(t)
+
+
+def _owner_document(tag: Tag) -> BeautifulSoup:
+    cur: Tag | BeautifulSoup = tag
+    while cur.parent is not None:
+        cur = cur.parent
+    assert isinstance(cur, BeautifulSoup)
+    return cur
+
+
+def _promote_mult_avatars(root: Tag | BeautifulSoup) -> None:
+    """将 sr-rd-mult-avatar（头像 + 昵称）替换为可打印的作者行，避免昵称随整块删除。"""
+    for av in list(root.find_all("sr-rd-mult-avatar")):
+        if not isinstance(av, Tag):
+            continue
+        label = _normalize_author_display(av.get_text())
+        if not label:
+            av.decompose()
+            continue
+        doc = _owner_document(av)
+        row = doc.new_tag("div", attrs={"class": "paperize-mult-author"})
+        row.string = label
+        av.replace_with(row)
 
 
 class SimpreadCleaner(BaseCleaner):
@@ -132,6 +160,7 @@ class SimpreadCleaner(BaseCleaner):
         else:
             work = soup.body or soup
 
+        _promote_mult_avatars(work)
         self._strip_noise(work)
         inner_html = "".join(str(c) for c in work.children if not isinstance(c, NavigableString) or str(c).strip())
 

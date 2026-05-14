@@ -33,6 +33,11 @@ def test_simpread_clean_removes_noise() -> None:
     assert "正文保留" in out
     assert "paperize-title" in out
     assert "中文标题示例" in out
+    assert "paperize-mult-author" in out
+    assert "花朝" in out
+    assert "好好组织语言哦" in out
+    assert "第一篇回答" in out
+    assert "第二篇回答" in out
 
 
 def test_generic_cleaner() -> None:
