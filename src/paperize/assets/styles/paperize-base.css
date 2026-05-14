@@ -1,0 +1,89 @@
+/* Paperize 基础打印样式（A4） */
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+html {
+  font-size: 11pt;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei",
+    "Noto Sans CJK SC", sans-serif;
+  line-height: 1.65;
+  color: #111;
+  background: #fff;
+}
+
+main.paperize-document {
+  max-width: 100%;
+}
+
+h1.paperize-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.75em;
+  line-height: 1.35;
+}
+
+article.paperize-content {
+  font-size: 10.5pt;
+  line-height: 1.65;
+}
+
+article.paperize-content p {
+  margin: 0 0 0.85em;
+}
+
+article.paperize-content img,
+article.paperize-content svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+article.paperize-content pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  background: #f9f9f9;
+}
+
+article.paperize-content table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.95em;
+}
+
+article.paperize-content th,
+article.paperize-content td {
+  border: 1px solid #999;
+  padding: 0.25em 0.35em;
+  word-break: break-word;
+}
+
+article.paperize-content blockquote {
+  margin: 0 0 0.85em;
+  padding-left: 0.75em;
+  border-left: 3px solid #ccc;
+  break-inside: avoid;
+}
+
+article.paperize-content figure {
+  break-inside: avoid;
+}
+
+article.paperize-content pre,
+article.paperize-content table {
+  break-inside: avoid-page;
+}
+
+.paperize-table-wide {
+  font-size: 0.85em;
+}

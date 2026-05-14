@@ -1,0 +1,4 @@
+/* 通用 HTML 的 A4 打印补充（在 paperize-base 之后加载） */
+article.paperize-content {
+  max-width: 100%;
+}

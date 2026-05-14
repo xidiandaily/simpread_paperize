@@ -1,0 +1,29 @@
+/* 简悦自定义标签打印修正（在 paperize-base 之后加载） */
+sr-read,
+sr-rd-content,
+sr-rd-mult,
+sr-rd-mult-content {
+  display: block !important;
+  float: none !important;
+  max-width: 100% !important;
+}
+
+sr-rd-mult-avatar,
+toc,
+toc-bg,
+read-process,
+sr-rd-crlbar,
+simpread-highlight,
+sr-snapshot-ctlbar,
+simpread-feedback,
+simpread-urlscheme {
+  display: none !important;
+}
+
+sr-rd-desc {
+  display: none !important;
+}
+
+sr-rd-footer {
+  display: none !important;
+}
