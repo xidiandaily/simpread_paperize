@@ -98,7 +98,14 @@ def convert_one(input_path: Path, output_pdf: Path, options: ConvertOptions) -> 
                     debug_dir=debug_dir,
                 )
 
-            render_pdf(cleaned_path, output_pdf, options, css_paths, log_lines=log_lines)
+            render_pdf(
+                cleaned_path,
+                output_pdf,
+                options,
+                css_paths,
+                log_lines=log_lines,
+                document_title=clean.title,
+            )
 
         if options.debug and debug_dir is not None:
             (debug_dir / "render.log").write_text("\n".join(log_lines), encoding="utf-8")
