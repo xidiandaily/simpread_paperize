@@ -97,6 +97,8 @@ examples/
 
 **Structure Decision**: 单包 CLI，`src/paperize` 为唯一源码根；测试与 fixture 置于仓库根 `tests/`；调试产物目录 **`.paperize-debug/<slug>/`**（相对当前工作目录或相对输出根，实现时在 `config`/`research` 中二选一并文档化，首版推荐相对**输出 PDF 所在目录**或**当前工作目录**之一，避免污染用户文档目录——以 `research.md` 决策为准）。
 
+**简悦离线示例（仓库内参考）**：根目录 `example_html/` 为简悦导出的真实离线 HTML 样例（如含 `sr-rd-title`、`sr-rd-desc`、`sr-rd-content`、`sr-rd-mult` / `sr-rd-mult-avatar`、`toc`、大段 `head` 内联样式等）。实现与分析 `SimpreadCleaner`、打印 CSS、`runtime_patch.js` 时可对照该目录；单元测试仍优先使用裁剪后的 `tests/fixtures/`，避免大文件拖慢 CI。勿依赖示例中的外链或 meta 作为运行时必要条件。
+
 ## Complexity Tracking
 
 > 无宪法门禁违规需额外论证；本表留空。
