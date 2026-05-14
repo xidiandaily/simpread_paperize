@@ -5,4 +5,12 @@ alwaysApply: true
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
+
+**Paperize / Speckit 分支约定（功能开发）**
+
+- 编写或修改**某条功能**的 `specs/NNN-*/spec.md`、`plan.md`、`tasks.md` 及对应实现时，工作 MUST 在名为 `NNN-*` 的 Git 特性分支上进行，并与 `specs/NNN-*` 目录编号一致。
+- 开始新功能规格前，优先走 **`/speckit-specify`**（会触发 `before_specify` → `speckit.git.feature` 建分支）；或手动运行  
+  `.specify/extensions/git/scripts/bash/create-new-feature.sh --json --short-name "<短名>" "<功能描述>"`  
+  若目录已存在需对齐分支名，可使用 `GIT_BRANCH_NAME=001-foo` 传入脚本，必要时加 `--allow-existing-branch` 仅切换分支。
+- 避免在 **`master`** 上持续堆积功能向提交；全仓治理类变更（如仅宪法/工具链）可与维护者约定是否仍在默认分支处理。
 <!-- SPECKIT END -->
