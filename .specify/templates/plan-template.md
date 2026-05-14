@@ -40,7 +40,14 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify alignment with `.specify/memory/constitution.md` (Paperize):
+
+- **中文优先**: 用户可见的 CLI 文案、错误与日志说明是否以中文为主；README/快速开始是否匹配。
+- **可复现与离线**: 是否坚持 uv、`pyproject.toml` 与 `uv.lock`；渲染是否使用项目管理的 Playwright Chromium（非系统 Chrome）；转换路径是否避免隐式网络依赖。
+- **只读源与安全输出**: 方案是否保证不就地改写用户 HTML；PDF 默认不覆盖，除非显式 `--overwrite`；输出与调试产物路径是否明确。
+- **清洗优先与分层**: 是否将 DOM 结构清洗置于注入打印 CSS 之前；是否避免巨型 `main.py`；打印样式是否规划在 `assets/styles/`（而非硬编码于 Python 长字符串）。
+- **扩展与跨平台**: Cleaner 是否可按 `match()` / `clean()` 演进；路径是否基于 `pathlib`；是否考虑 macOS/Windows/Docker 与中文文件名。
+- **打印目标与 MVP**: 默认 A4、正文优先、背景简洁；是否接受对极端页面「失败但日志清晰」，并避免第一版引入 Web 服务或过度通用爬虫式兼容。
 
 ## Project Structure
 

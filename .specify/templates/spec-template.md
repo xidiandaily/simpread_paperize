@@ -8,6 +8,8 @@
 
 **Input**: User description: "$ARGUMENTS"
 
+> **Paperize 语境**: 若功能涉及本地 HTML、PDF、浏览器或日志，规格中 MUST 说明离线边界、是否修改用户源文件、以及日志/调试产物如何避免泄露原文隐私；并与 `.specify/memory/constitution.md` 保持一致。
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--

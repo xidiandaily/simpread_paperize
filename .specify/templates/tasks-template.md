@@ -25,6 +25,7 @@ description: "Task list template for feature implementation"
 - **Web app**: `backend/src/`, `frontend/src/`
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
+- **Paperize (CLI)**: prefer `src/paperize/` with packages such as `cleaner/`, `renderer/`, `styles/` (or equivalent per plan.md)
 
 <!--
   ============================================================================
