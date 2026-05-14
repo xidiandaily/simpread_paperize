@@ -21,7 +21,7 @@ simpread-urlscheme {
   display: none !important;
 }
 
-/* 聚合多段回答：作者昵称 + 段间分隔 */
+/* 聚合多段回答：作者行（前缀 + 昵称整行右对齐）+ 段间分隔 */
 article.paperize-content .paperize-mult-author {
   display: block !important;
   font-size: 0.98em;
@@ -29,6 +29,13 @@ article.paperize-content .paperize-mult-author {
   color: #2a2a2a;
   margin: 0 0 0.45em;
   line-height: 1.35;
+  text-align: right;
+}
+
+article.paperize-content .paperize-mult-author::before {
+  content: "文章作者：";
+  font-weight: 500;
+  color: #444;
 }
 
 article.paperize-content sr-rd-mult + sr-rd-mult {
