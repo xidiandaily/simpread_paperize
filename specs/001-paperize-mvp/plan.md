@@ -4,7 +4,7 @@
 
 **Input**: Feature specification from `/specs/001-paperize-mvp/spec.md`
 
-**Note**: 本计划由 `/speckit-plan` 生成；任务拆解见后续 `/speckit-tasks` 产出的 `tasks.md`（本命令不生成）。
+**Note**: 本计划由 `/speckit-plan` 生成；开发任务列表见同目录 **`tasks.md`**（T001–T024，含验收标准与依赖）。
 
 ## Summary
 
@@ -59,7 +59,7 @@ specs/001-paperize-mvp/
 ├── contracts/
 │   └── cli.md
 ├── spec.md
-└── tasks.md              # /speckit-tasks 生成
+└── tasks.md              # 开发任务列表（T001–T024）
 ```
 
 ### Source Code (repository root)
