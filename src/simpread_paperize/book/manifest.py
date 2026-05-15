@@ -72,6 +72,14 @@ def _require_str(d: dict[str, Any], key: str, ctx: str) -> str:
     return v.strip()
 
 
+def _require_rel_path_str(d: dict[str, Any], key: str, ctx: str) -> str:
+    """manifest 内相对路径（封面/篇目 PDF）：须非空，但保留首尾空白以匹配真实文件名。"""
+    v = d.get(key)
+    if not isinstance(v, str) or not v.strip():
+        raise ManifestError(f"{ctx} 缺少或非法字符串字段 {key!r}。")
+    return v
+
+
 def _optional_int(d: dict[str, Any], key: str, default: int, ctx: str) -> int:
     v = d.get(key, default)
     if v is None:
@@ -107,7 +115,7 @@ def parse_manifest_dict(data: dict[str, Any], manifest_path: Path) -> ManifestMo
     for i, vr in enumerate(vols_raw):
         if not isinstance(vr, dict):
             raise ManifestError(f"volumes[{i}] 必须为 mapping。")
-        cover = _require_str(vr, "cover_pdf", f"volumes[{i}]")
+        cover = _require_rel_path_str(vr, "cover_pdf", f"volumes[{i}]")
         try:
             resolve_under_manifest_dir(mdir, cover)
         except PathEscapeError as exc:
@@ -124,7 +132,7 @@ def parse_manifest_dict(data: dict[str, Any], manifest_path: Path) -> ManifestMo
             if not isinstance(ar, dict):
                 raise ManifestError(f"volumes[{i}].articles[{j}] 非法。")
             t = _require_str(ar, "title", f"articles[{j}]")
-            p = _require_str(ar, "path", f"articles[{j}]")
+            p = _require_rel_path_str(ar, "path", f"articles[{j}]")
             if not p.lower().endswith(".pdf"):
                 raise ManifestError(f"篇目路径必须为 .pdf：{p!r}")
             try:

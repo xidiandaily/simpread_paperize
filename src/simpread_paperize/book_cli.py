@@ -10,7 +10,7 @@ import typer
 from rich.console import Console
 
 from simpread_paperize.book.index_rename import IndexRenameError, apply_renames, plan_renames
-from simpread_paperize.book.init_manifest import write_manifest_template
+from simpread_paperize.book.init_manifest import PLACEHOLDER_COVER_REL, write_manifest_template
 from simpread_paperize.book.manifest import ManifestError, load_manifest
 from simpread_paperize.book.merge_build import BuildError, run_build
 from simpread_paperize.book.plan_cmd import run_plan_cli
@@ -52,11 +52,40 @@ def _exit_code_for_plan(plan) -> int:
 def init(
     target_dir: Annotated[Path, typer.Argument(help="目标目录（将写入 manifest.yaml）")],
     force: Annotated[bool, typer.Option("--force", help="manifest 已存在时允许覆盖")] = False,
+    no_scan: Annotated[
+        bool,
+        typer.Option(
+            "--no-scan",
+            help="不扫描 PDF：始终写入固定教学模板（与早期行为一致）",
+        ),
+    ] = False,
+    shallow: Annotated[
+        bool,
+        typer.Option(
+            "--shallow",
+            help="仅扫描目标目录根下的 *.pdf，不含子文件夹（默认会递归子目录）",
+        ),
+    ] = False,
 ) -> None:
-    """生成 manifest 模板。"""
+    """生成 manifest：默认递归扫描目录内 PDF 生成初版；无 PDF 时写入静态模板。"""
     try:
-        dest = write_manifest_template(target_dir.resolve(), force=force)
+        dest, n = write_manifest_template(
+            target_dir.resolve(),
+            force=force,
+            scan=not no_scan,
+            recursive=not shallow,
+        )
         console.print(f"已生成 [cyan]{dest}[/cyan]")
+        if not no_scan and n > 0:
+            console.print(
+                f"已从目录扫描到 [bold]{n}[/bold] 个 PDF 并写入篇目；"
+                f"占位封面为 [cyan]{PLACEHOLDER_COVER_REL}[/cyan]（可替换为你的封面 PDF）。"
+            )
+        elif not no_scan and n == 0:
+            console.print(
+                "[dim]目录内未发现 PDF，已写入静态教学模板；放入 PDF 后可执行 "
+                "init --force 重新生成初版。[/dim]"
+            )
     except FileExistsError:
         err_console.print(
             "[red]错误：[/red]目标目录已存在 manifest.yaml。若需覆盖请加 [bold]--force[/bold]。"

@@ -48,6 +48,7 @@ def build_volume_pdf(
         raise BuildError(f"找不到封面：{cover_rel}")
     with cover_abs.open("rb") as f:
         cover_reader = PdfReader(f)
+        cover_page_count = len(cover_reader.pages)
         _append_all_pages(writer, cover_reader)
 
     toc_entries = [(a["title"], a["start_page"]) for a in vol.get("articles", [])]
@@ -67,12 +68,18 @@ def build_volume_pdf(
 
     total_pages = len(writer.pages)
     header = model.trace_header
+    body_page_total = max(1, total_pages - cover_page_count)
 
     for i in range(total_pages):
+        if i < cover_page_count:
+            continue
         page = writer.pages[i]
         w = float(page.mediabox.width)
         h = float(page.mediabox.height)
-        overlay = PdfReader(BytesIO(render_overlay_page(w, h, header, i + 1, total_pages)))
+        body_cur = i - cover_page_count + 1
+        overlay = PdfReader(
+            BytesIO(render_overlay_page(w, h, header, body_cur, body_page_total))
+        )
         page.merge_page(overlay.pages[0])
 
     for idx, art in enumerate(vol.get("articles", [])):

@@ -18,10 +18,12 @@ uv sync
 在**空目录或已有 PDF 的目录**下（示例用 `uv run`，与 `sr_paperize` 一致）：
 
 ```bash
-# 1) 生成 manifest 模板
+# 1) 生成 manifest（默认递归扫描目录内 *.pdf 写初版；无 PDF 时才是静态教学模板）
 uv run sr_book init ./my-book
+# 仅根目录 PDF：uv run sr_book init ./my-book --shallow
+# 不要扫描、只要固定模板：uv run sr_book init ./my-book --no-scan
 
-# 2) 编辑 ./my-book/manifest.yaml：补全书名、trace_header、各卷 cover_pdf、篇 path/title
+# 2) 编辑 ./my-book/manifest.yaml：补全书名、trace_header；若用占位封面可换成你的封面 PDF
 
 # 3) 按 manifest 顺序为篇目 PDF 加数字前缀，并回写 manifest
 uv run sr_book index -m ./my-book/manifest.yaml

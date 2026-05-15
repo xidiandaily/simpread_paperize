@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simpread_paperize"
-version = "0.1.0"
+version = "0.1.1"
 description = "将简悦等离线 HTML 转为 A4 打印友好 PDF 的本地 CLI 工具"
 readme = "README.md"
 requires-python = ">=3.11"

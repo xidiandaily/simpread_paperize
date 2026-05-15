@@ -26,8 +26,13 @@ sr_book build ...
 |-------------|------|------|
 | `TARGET_DIR` | 是 | 生成模板的目标目录（不存在则创建） |
 | `--force` | 否 | 若 `manifest.yaml` 已存在，允许覆盖（默认 MUST 拒绝覆盖并退出码 1） |
+| `--no-scan` | 否 | 不扫描 PDF：始终写入固定教学模板（与早期仅模板行为一致） |
+| `--shallow` | 否 | 仅扫描目标目录**根下**的 `*.pdf`；默认会**递归**子目录 |
 
-**行为**：在 `TARGET_DIR` 写入 `manifest.yaml` 模板（含 `schema_version`、`book`、`max_pages_per_volume`、`toc_pages_per_volume`、`volumes` 占位），字段足以被 `index`/`plan`/`build` 解析。
+**行为**：
+
+- **默认（扫描）**：在 `TARGET_DIR` 下递归查找 `*.pdf`（排除占位封面文件 `covers/_sr_book_placeholder_cover.pdf` 自身）。若找到至少一个：写入 **初版** `manifest.yaml`（书名默认取目录名；`trace_header` 为占位中文提示；单卷、`articles` 为排序后的相对路径与篇名=文件名去扩展名），并生成一页空白 **占位封面** PDF（路径见上；已存在则不覆盖）。若目录内**没有任何** PDF：写入静态教学模板（与 `--no-scan` 类似）。
+- **`--no-scan`**：不遍历文件，始终写入固定教学模板。
 
 ## `sr_book index`
 
