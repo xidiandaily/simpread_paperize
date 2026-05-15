@@ -4,6 +4,8 @@
 
 **Simpread Paperize**（命令 `sr_paperize`）是一个**本地离线** CLI：把 **简悦（Simpread）** 等工具导出的 **HTML 文章** 清洗并渲染为 **A4 打印友好 PDF**，不依赖系统 Chrome，不上传文件。
 
+**SR Book**（命令 `sr_book`）与上并列：在**不修改已有单篇 PDF** 的前提下，按 `manifest.yaml` 将多篇 PDF 编排为多卷「合集 PDF」（详见 [`specs/003-sr-book-cli/quickstart.md`](specs/003-sr-book-cli/quickstart.md)）。
+
 ## 解决的问题
 
 浏览器里阅读体验好的离线 HTML，用 Chrome 直接打印常出现：版心不适配 A4、阅读器 UI 进 PDF、分页与字体不理想等。本工具用 **Python 清洗 DOM + 打印 CSS + Playwright Chromium** 导出 PDF。
@@ -61,6 +63,7 @@ uv run sr_paperize article.html -o article.pdf --debug
 uv sync
 uv run playwright install chromium
 uv run sr_paperize --help
+uv run sr_book --help
 uv run pytest
 ```
 
