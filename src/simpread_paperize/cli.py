@@ -1,4 +1,4 @@
-"""Paperize 命令行入口。"""
+"""Simpread Paperize 命令行入口。"""
 
 from __future__ import annotations
 
@@ -9,8 +9,8 @@ from typing import Annotated, Optional
 import typer
 from rich.console import Console
 
-from paperize.convert import collect_html_files, convert_batch, convert_one
-from paperize.models import ConvertOptions
+from simpread_paperize.convert import collect_html_files, convert_batch, convert_one
+from simpread_paperize.models import ConvertOptions
 
 console = Console(stderr=False)
 err_console = Console(stderr=True)
@@ -37,11 +37,11 @@ def _main(
     ] = False,
 ) -> None:
     """
-    Paperize：将简悦（Simpread）等离线 HTML 转为 A4 打印友好 PDF。
+    Simpread Paperize：将简悦（Simpread）等离线 HTML 转为 A4 打印友好 PDF。
 
-    单文件：paperize 文章.html -o 输出.pdf
+    单文件：sr_paperize 文章.html -o 输出.pdf
 
-    批量：paperize ./备份目录 --out ./pdf --recursive
+    批量：sr_paperize ./备份目录 --out ./pdf --recursive
     """
     try:
         if input_path.is_dir():
@@ -116,7 +116,7 @@ def _main(
 
 
 def app() -> None:
-    """控制台入口 `paperize = paperize.cli:app`。"""
+    """控制台入口 `sr_paperize = simpread_paperize.cli:app`。"""
     typer.run(_main)
 
 

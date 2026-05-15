@@ -1,11 +1,11 @@
-"""文件名安全化（跨平台，保留中文）。"""
+﻿"""文件名安全化（跨平台，保留中文）。"""
 
 from __future__ import annotations
 
 import re
 import unicodedata
 
-from paperize.config import MAX_TITLE_FILENAME_LEN
+from simpread_paperize.config import MAX_TITLE_FILENAME_LEN
 
 # Windows 保留名（节选）
 _WIN_RESERVED = {

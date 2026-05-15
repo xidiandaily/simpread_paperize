@@ -1,4 +1,4 @@
-"""非简悦 HTML 的通用清洗。"""
+﻿"""非简悦 HTML 的通用清洗。"""
 
 from __future__ import annotations
 
@@ -8,8 +8,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from paperize.cleaner.base import BaseCleaner
-from paperize.models import CleanResult
+from simpread_paperize.cleaner.base import BaseCleaner
+from simpread_paperize.models import CleanResult
 
 
 def _normalize_ws(text: str) -> str:

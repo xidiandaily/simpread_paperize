@@ -1,10 +1,10 @@
-"""SimpreadCleaner / Registry 测试。"""
+﻿"""SimpreadCleaner / Registry 测试。"""
 
 from pathlib import Path
 
-from paperize.cleaner import choose_cleaner
-from paperize.cleaner.generic import GenericCleaner
-from paperize.cleaner.simpread import SimpreadCleaner
+from simpread_paperize.cleaner import choose_cleaner
+from simpread_paperize.cleaner.generic import GenericCleaner
+from simpread_paperize.cleaner.simpread import SimpreadCleaner
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "simpread_min.html"
 

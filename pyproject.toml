@@ -3,7 +3,7 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "paperize"
+name = "simpread_paperize"
 version = "0.1.0"
 description = "将简悦等离线 HTML 转为 A4 打印友好 PDF 的本地 CLI 工具"
 readme = "README.md"
@@ -18,13 +18,13 @@ dependencies = [
 ]
 
 [project.scripts]
-paperize = "paperize.cli:app"
+sr_paperize = "simpread_paperize.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-paperize = ["assets/styles/*.css", "runtime_patch.js"]
+simpread_paperize = ["assets/styles/*.css", "runtime_patch.js"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

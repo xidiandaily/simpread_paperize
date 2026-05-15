@@ -1,6 +1,6 @@
-"""PDF 页脚模板（标题转义、页码占位）。"""
+﻿"""PDF 页脚模板（标题转义、页码占位）。"""
 
-from paperize.renderer import build_pdf_footer_template
+from simpread_paperize.renderer import build_pdf_footer_template
 
 
 def test_footer_template_escapes_title() -> None:

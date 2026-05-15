@@ -6,7 +6,7 @@ DEFAULT_PAPER = "A4"
 DEFAULT_MARGIN = "14mm"
 MAX_TITLE_FILENAME_LEN = 120
 
-# 包内资源根（安装后位于 site-packages/paperize/）
+# 包内资源根（安装后位于 site-packages/simpread_paperize/）
 PACKAGE_ROOT = Path(__file__).resolve().parent
 
 

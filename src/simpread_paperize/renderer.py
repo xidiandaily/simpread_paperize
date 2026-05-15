@@ -1,4 +1,4 @@
-"""Playwright 渲染与 PDF 导出。"""
+﻿"""Playwright 渲染与 PDF 导出。"""
 
 from __future__ import annotations
 
@@ -8,8 +8,8 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from paperize.config import runtime_js_path
-from paperize.models import ConvertOptions
+from simpread_paperize.config import runtime_js_path
+from simpread_paperize.models import ConvertOptions
 
 
 def _margin_dict(margin: str, *, bottom: str | None = None) -> dict[str, str]:

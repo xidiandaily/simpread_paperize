@@ -12,7 +12,7 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 **约束**: 仅重命名与分发；**不**新增 Cleaner/CSS/Dockerfile；**不**修改 `specs/001-paperize-mvp/` 历史文档；内部 `paperize-*` class、`.paperize-debug/`、`paperize-base.css` **保持不变**。
 
-**格式**: `- [ ] Tnnn [P?] [USx?] …`；Setup / Foundational / Polish **无** `[USx]`；Phase 3–5 **必须** 带 `[US1]`–`[US3]`。
+**格式**: `- [X] Tnnn [P?] [USx?] …`；Setup / Foundational / Polish **无** `[USx]`；Phase 3–5 **必须** 带 `[US1]`–`[US3]`。
 
 ---
 
@@ -24,8 +24,8 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T001 更新 `pyproject.toml`：`[project].name = "simpread_paperize"`；`[project.scripts]` 仅保留 `sr_paperize = "simpread_paperize.cli:app"`，**删除** `paperize = ...` 行；验收：`rg '^\s*paperize\s*=' pyproject.toml` 在 `[project.scripts]` 段无匹配；`rg 'sr_paperize = "simpread_paperize.cli:app"' pyproject.toml` 有匹配
-- [ ] T002 [P] 在仓库根新增 `LICENSE`（MIT 全文，版权年份与持有人与 README 一致）；验收：`rg -i 'MIT License' LICENSE` 有匹配且文件非空
+- [X] T001 更新 `pyproject.toml`：`[project].name = "simpread_paperize"`；`[project.scripts]` 仅保留 `sr_paperize = "simpread_paperize.cli:app"`，**删除** `paperize = ...` 行；验收：`rg '^\s*paperize\s*=' pyproject.toml` 在 `[project.scripts]` 段无匹配；`rg 'sr_paperize = "simpread_paperize.cli:app"' pyproject.toml` 有匹配
+- [X] T002 [P] 在仓库根新增 `LICENSE`（MIT 全文，版权年份与持有人与 README 一致）；验收：`rg -i 'MIT License' LICENSE` 有匹配且文件非空
 
 ---
 
@@ -37,11 +37,11 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T003 将 `src/paperize/` **整目录**迁移为 `src/simpread_paperize/`（推荐 `git mv src/paperize src/simpread_paperize`，含 `assets/`、`runtime_patch.js`、`cleaner/`）；验收：`test -d src/simpread_paperize/cli.py` 或 `Test-Path src/simpread_paperize/cli.py`；`test ! -e src/paperize/cli.py`
-- [ ] T004 在 `src/simpread_paperize/**/*.py` 批量替换 import：`from paperize.` → `from simpread_paperize.`、`import paperize` → `import simpread_paperize`（**勿改** `paperize-base.css` 字符串、`paperize-document` 等 class 字面量）；验收：`rg 'from paperize|import paperize' src/simpread_paperize --glob '*.py'` 零匹配
-- [ ] T005 更新 `pyproject.toml` 中 `[tool.setuptools.package-data]`：键 `paperize` → `simpread_paperize`，glob 保持 `assets/styles/*.css` 与 `runtime_patch.js`；验收：`rg '^\s*simpread_paperize\s*=' pyproject.toml` 有匹配；`rg '^\s*paperize\s*=' pyproject.toml` 在 package-data 段无匹配
-- [ ] T006 执行 `uv sync` 并删除陈旧 `src/paperize.egg-info/`（若存在）；验收：`uv sync` 退出码 0；`uv run python -c "import simpread_paperize"` 退出码 0
-- [ ] T007 在 `src/simpread_paperize/config.py` 将注释中的 `site-packages/paperize/` 改为 `site-packages/simpread_paperize/`（**仅注释**）；验收：`rg 'site-packages/simpread_paperize' src/simpread_paperize/config.py` 有匹配
+- [X] T003 将 `src/paperize/` **整目录**迁移为 `src/simpread_paperize/`（推荐 `git mv src/paperize src/simpread_paperize`，含 `assets/`、`runtime_patch.js`、`cleaner/`）；验收：`test -d src/simpread_paperize/cli.py` 或 `Test-Path src/simpread_paperize/cli.py`；`test ! -e src/paperize/cli.py`
+- [X] T004 在 `src/simpread_paperize/**/*.py` 批量替换 import：`from paperize.` → `from simpread_paperize.`、`import paperize` → `import simpread_paperize`（**勿改** `paperize-base.css` 字符串、`paperize-document` 等 class 字面量）；验收：`rg 'from paperize|import paperize' src/simpread_paperize --glob '*.py'` 零匹配
+- [X] T005 更新 `pyproject.toml` 中 `[tool.setuptools.package-data]`：键 `paperize` → `simpread_paperize`，glob 保持 `assets/styles/*.css` 与 `runtime_patch.js`；验收：`rg '^\s*simpread_paperize\s*=' pyproject.toml` 有匹配；`rg '^\s*paperize\s*=' pyproject.toml` 在 package-data 段无匹配
+- [X] T006 执行 `uv sync` 并删除陈旧 `src/paperize.egg-info/`（若存在）；验收：`uv sync` 退出码 0；`uv run python -c "import simpread_paperize"` 退出码 0
+- [X] T007 在 `src/simpread_paperize/config.py` 将注释中的 `site-packages/paperize/` 改为 `site-packages/simpread_paperize/`（**仅注释**）；验收：`rg 'site-packages/simpread_paperize' src/simpread_paperize/config.py` 有匹配
 
 **Checkpoint**: Foundational 完成 — 方可进入 US1 CLI 与后续故事。
 
@@ -55,8 +55,8 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T008 [US1] 更新 `src/simpread_paperize/cli.py`：模块/docstring 与 Typer 帮助中的示例命令 `paperize` → `sr_paperize`；产品描述可用「Simpread Paperize」；`main` 文档字符串中删除 `paperize = paperize.cli:app`，改为 `sr_paperize = simpread_paperize.cli:app`；**不修改**参数定义与 `convert_*` 调用逻辑；验收：`rg 'paperize ' src/simpread_paperize/cli.py` 在用户示例行无未标注的 `paperize` 命令（允许英文产品词 Paperize 若存在）
-- [ ] T009 [US1] 验证 CLI 入口：`uv run sr_paperize --help`；验收：退出码 0；`uv run sr_paperize --help 2>&1 | rg -i '单文件|批量|html|pdf'` 至少一项有匹配；帮助中 `sr_paperize` 出现且不以 `paperize` 作为**推荐**用法示例
+- [X] T008 [US1] 更新 `src/simpread_paperize/cli.py`：模块/docstring 与 Typer 帮助中的示例命令 `paperize` → `sr_paperize`；产品描述可用「Simpread Paperize」；`main` 文档字符串中删除 `paperize = paperize.cli:app`，改为 `sr_paperize = simpread_paperize.cli:app`；**不修改**参数定义与 `convert_*` 调用逻辑；验收：`rg 'paperize ' src/simpread_paperize/cli.py` 在用户示例行无未标注的 `paperize` 命令（允许英文产品词 Paperize 若存在）
+- [X] T009 [US1] 验证 CLI 入口：`uv run sr_paperize --help`；验收：退出码 0；`uv run sr_paperize --help 2>&1 | rg -i '单文件|批量|html|pdf'` 至少一项有匹配；帮助中 `sr_paperize` 出现且不以 `paperize` 作为**推荐**用法示例
 
 **Checkpoint**: US1 完成 — 开发机已可用 `uv run sr_paperize`。
 
@@ -70,11 +70,11 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T010 [US2] 确认 `src/simpread_paperize/convert.py` **仅** import 行相对 MVP 有变（不修改 `paperize-base.css`、`.paperize-debug/`、`prefix="paperize-"` 等业务常量）；验收：`git diff -- src/simpread_paperize/convert.py`（对比重命名前）不含 `def ` / `class ` 签名变更；`rg 'paperize-base\.css|\.paperize-debug' src/simpread_paperize/convert.py` 仍匹配
-- [ ] T011 [P] [US2] 确认 `src/simpread_paperize/renderer.py` 仅 import 变更；验收：`git diff` 无新增渲染/PDF 选项逻辑；`uv run python -c "from simpread_paperize.renderer import render_pdf"` 退出码 0
-- [ ] T012 [P] [US2] 确认 `src/simpread_paperize/cleaner/base.py`、`cleaner/simpread.py`、`cleaner/generic.py`、`cleaner/__init__.py` 仅 import 变更；**保留**输出 HTML 中 `paperize-title` 等 class；验收：`rg 'paperize-title|paperize-document' src/simpread_paperize/cleaner/simpread.py` 有匹配；`rg 'from paperize' src/simpread_paperize/cleaner --glob '*.py'` 零匹配
-- [ ] T013 [P] [US2] 更新 `tests/test_filename.py`、`tests/test_simpread_cleaner.py`、`tests/test_renderer_footer.py` 的 import 为 `simpread_paperize.*`；**保留** `test_simpread_cleaner.py` 中对 `paperize-title` 等 class 的断言；验收：`rg 'from paperize|import paperize' tests --glob '*.py'` 零匹配
-- [ ] T014 [US2] 运行全量测试：`uv run pytest`；验收：退出码 0；失败数为 0
+- [X] T010 [US2] 确认 `src/simpread_paperize/convert.py` **仅** import 行相对 MVP 有变（不修改 `paperize-base.css`、`.paperize-debug/`、`prefix="paperize-"` 等业务常量）；验收：`git diff -- src/simpread_paperize/convert.py`（对比重命名前）不含 `def ` / `class ` 签名变更；`rg 'paperize-base\.css|\.paperize-debug' src/simpread_paperize/convert.py` 仍匹配
+- [X] T011 [P] [US2] 确认 `src/simpread_paperize/renderer.py` 仅 import 变更；验收：`git diff` 无新增渲染/PDF 选项逻辑；`uv run python -c "from simpread_paperize.renderer import render_pdf"` 退出码 0
+- [X] T012 [P] [US2] 确认 `src/simpread_paperize/cleaner/base.py`、`cleaner/simpread.py`、`cleaner/generic.py`、`cleaner/__init__.py` 仅 import 变更；**保留**输出 HTML 中 `paperize-title` 等 class；验收：`rg 'paperize-title|paperize-document' src/simpread_paperize/cleaner/simpread.py` 有匹配；`rg 'from paperize' src/simpread_paperize/cleaner --glob '*.py'` 零匹配
+- [X] T013 [P] [US2] 更新 `tests/test_filename.py`、`tests/test_simpread_cleaner.py`、`tests/test_renderer_footer.py` 的 import 为 `simpread_paperize.*`；**保留** `test_simpread_cleaner.py` 中对 `paperize-title` 等 class 的断言；验收：`rg 'from paperize|import paperize' tests --glob '*.py'` 零匹配
+- [X] T014 [US2] 运行全量测试：`uv run pytest`；验收：退出码 0；失败数为 0
 
 **Checkpoint**: US2 完成 — 代码库可发布级测试通过。
 
@@ -88,9 +88,9 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T015 [US3] 重写 `README.md`：标题/定位「Simpread Paperize」；克隆目录 `simpread_paperize`；`uv sync` + `uv run sr_paperize` 示例；`uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"`；`playwright install chromium` 提醒；许可证小节链接 `LICENSE`（MIT）；**用户示例命令**一律 `sr_paperize`/`uv run sr_paperize`，不出现未标注废弃的 `paperize` 推荐用法；验收：`rg 'sr_paperize' README.md` 有匹配；`rg 'uv tool install' README.md` 有匹配；`rg 'playwright install chromium' README.md` 有匹配；`rg 'MIT' README.md` 有匹配
-- [ ] T016 [P] [US3] 核对 `specs/002-simpread-rebrand/contracts/cli.md` 与实现一致（命令 `sr_paperize`、选项表与 `src/simpread_paperize/cli.py` 参数一致，含 `--traceback` 若已实现）；验收：`rg '^sr_paperize' specs/002-simpread-rebrand/contracts/cli.md` 有匹配；人工或 diff 确认选项名与 `cli.py` 一致
-- [ ] T017 [P] [US3] 同步 `specs/002-simpread-rebrand/quickstart.md` 与 `README.md` 的安装命令（`sr_paperize`、`uv tool install` 模板一致）；验收：`rg 'sr_paperize' specs/002-simpread-rebrand/quickstart.md` 有匹配；无 `uv run paperize` 残留
+- [X] T015 [US3] 重写 `README.md`：标题/定位「Simpread Paperize」；克隆目录 `simpread_paperize`；`uv sync` + `uv run sr_paperize` 示例；`uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"`；`playwright install chromium` 提醒；许可证小节链接 `LICENSE`（MIT）；**用户示例命令**一律 `sr_paperize`/`uv run sr_paperize`，不出现未标注废弃的 `paperize` 推荐用法；验收：`rg 'sr_paperize' README.md` 有匹配；`rg 'uv tool install' README.md` 有匹配；`rg 'playwright install chromium' README.md` 有匹配；`rg 'MIT' README.md` 有匹配
+- [X] T016 [P] [US3] 核对 `specs/002-simpread-rebrand/contracts/cli.md` 与实现一致（命令 `sr_paperize`、选项表与 `src/simpread_paperize/cli.py` 参数一致，含 `--traceback` 若已实现）；验收：`rg '^sr_paperize' specs/002-simpread-rebrand/contracts/cli.md` 有匹配；人工或 diff 确认选项名与 `cli.py` 一致
+- [X] T017 [P] [US3] 同步 `specs/002-simpread-rebrand/quickstart.md` 与 `README.md` 的安装命令（`sr_paperize`、`uv tool install` 模板一致）；验收：`rg 'sr_paperize' specs/002-simpread-rebrand/quickstart.md` 有匹配；无 `uv run paperize` 残留
 
 **Checkpoint**: US3 完成 — 对外文档与契约对齐。
 
@@ -104,10 +104,10 @@ description: "Simpread Paperize 品牌与分发重命名（/speckit-tasks 生成
 
 ### Tasks
 
-- [ ] T018 全库 Python import 残留检查（含 `tests/`）：`rg 'from paperize|import paperize' --glob '*.py' .`；验收：**零匹配**（允许 `specs/001-paperize-mvp/`、`paperize-base.css`、`paperize-title` 等非 import 上下文）
-- [ ] T019 分发入口残留检查：`rg 'paperize\.cli:app' pyproject.toml`；验收：零匹配；`rg 'sr_paperize' pyproject.toml` 有匹配
-- [ ] T020 [P] 对照 `specs/002-simpread-rebrand/plan.md`「保持不变」清单 spot-check：`rg '\.paperize-debug|paperize-base\.css|paperize-document' src/simpread_paperize`；验收：均有匹配（证明未误删内部标识）
-- [ ] T021 smoke：对已安装 Chromium 的环境执行 `uv run sr_paperize tests/fixtures/simpread_min.html -o /tmp/sr_paperize_smoke.pdf`（Windows 可用 `$env:TEMP\sr_paperize_smoke.pdf`）；验收：退出码 0；输出 PDF 存在且大小 > 0
+- [X] T018 全库 Python import 残留检查（含 `tests/`）：`rg 'from paperize|import paperize' --glob '*.py' .`；验收：**零匹配**（允许 `specs/001-paperize-mvp/`、`paperize-base.css`、`paperize-title` 等非 import 上下文）
+- [X] T019 分发入口残留检查：`rg 'paperize\.cli:app' pyproject.toml`；验收：零匹配；`rg 'sr_paperize' pyproject.toml` 有匹配
+- [X] T020 [P] 对照 `specs/002-simpread-rebrand/plan.md`「保持不变」清单 spot-check：`rg '\.paperize-debug|paperize-base\.css|paperize-document' src/simpread_paperize`；验收：均有匹配（证明未误删内部标识）
+- [X] T021 smoke：对已安装 Chromium 的环境执行 `uv run sr_paperize tests/fixtures/simpread_min.html -o /tmp/sr_paperize_smoke.pdf`（Windows 可用 `$env:TEMP\sr_paperize_smoke.pdf`）；验收：退出码 0；输出 PDF 存在且大小 > 0
 - [ ] T022（可选）`uv tool install -e .` 后执行 `sr_paperize --help` 与 T021 同等 smoke；验收：`sr_paperize --help` 退出码 0（验证 P2 工具安装路径）
 
 ---

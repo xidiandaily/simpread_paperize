@@ -1,4 +1,4 @@
-"""单文件 / 批量转换编排。"""
+﻿"""单文件 / 批量转换编排。"""
 
 from __future__ import annotations
 
@@ -6,11 +6,11 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from paperize.cleaner import choose_cleaner
-from paperize.config import styles_dir
-from paperize.filename import safe_filename
-from paperize.models import CleanResult, ConvertOptions, ConvertResult
-from paperize.renderer import render_pdf
+from simpread_paperize.cleaner import choose_cleaner
+from simpread_paperize.config import styles_dir
+from simpread_paperize.filename import safe_filename
+from simpread_paperize.models import CleanResult, ConvertOptions, ConvertResult
+from simpread_paperize.renderer import render_pdf
 
 
 def _css_paths_for(clean: CleanResult) -> list[Path]:

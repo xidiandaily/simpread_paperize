@@ -1,6 +1,6 @@
-"""文件名安全化测试。"""
+﻿"""文件名安全化测试。"""
 
-from paperize.filename import safe_filename
+from simpread_paperize.filename import safe_filename
 
 
 def test_safe_filename_chinese() -> None:
