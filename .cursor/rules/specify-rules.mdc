@@ -3,11 +3,11 @@ alwaysApply: true
 ---
 
 <!-- SPECKIT START -->
-**当前实现计划**（随特性分支切换而变）：优先阅读 `specs/001-paperize-mvp/plan.md`；需求与验收以同目录 `spec.md` 为准。
+**当前实现计划**（随特性分支切换而变）：优先阅读 `specs/002-simpread-rebrand/plan.md`；需求与验收以同目录 `spec.md` 为准。
 
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the plan and
-`specs/001-paperize-mvp/research.md` when implementing this feature.
+`specs/002-simpread-rebrand/research.md` when implementing this feature.
 
 **Paperize / Speckit 分支约定（功能开发）**
 
