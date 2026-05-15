@@ -14,7 +14,7 @@
 ## 路径 A：开发机（克隆仓库）
 
 ```bash
-git clone https://github.com/<owner>/simpread_paperize.git
+git clone https://github.com/xidiandaily/simpread_paperize.git
 cd simpread_paperize
 uv sync
 uv run playwright install chromium
@@ -69,7 +69,7 @@ sr_paperize tests/fixtures/simpread_min.html -o /tmp/out.pdf
 无需克隆完整开发树，安装发布型工具入口：
 
 ```bash
-uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"
+uv tool install "simpread_paperize @ git+https://github.com/xidiandaily/simpread_paperize.git"
 playwright install chromium
 sr_paperize --help
 ```

@@ -165,7 +165,7 @@ tests/
 | 4 | `rg 'from paperize\|import paperize' -g '*.py'` | 零匹配（全仓含 tests） |
 | 5 | `rg '^\s*paperize\s*=' pyproject.toml` 或检查 `[project.scripts]` | 仅 `sr_paperize` 条目 |
 | 6（可选 smoke） | `uv tool install -e .` 后 `sr_paperize <fixture> -o /tmp/out.pdf` | PDF 可打开；与 MVP smoke 同级 |
-| 7（可选 Git 安装） | `uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"` | PATH 中 `sr_paperize --help` 可用 |
+| 7（可选 Git 安装） | `uv tool install "simpread_paperize @ git+https://github.com/xidiandaily/simpread_paperize.git"` | PATH 中 `sr_paperize --help` 可用 |
 
 Playwright：若环境未装浏览器，先 `uv run playwright install chromium`（与 README 一致）。
 

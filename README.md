@@ -1,5 +1,7 @@
 # Simpread Paperize
 
+仓库：<https://github.com/xidiandaily/simpread_paperize>
+
 **Simpread Paperize**（命令 `sr_paperize`）是一个**本地离线** CLI：把 **简悦（Simpread）** 等工具导出的 **HTML 文章** 清洗并渲染为 **A4 打印友好 PDF**，不依赖系统 Chrome，不上传文件。
 
 ## 解决的问题
@@ -16,7 +18,7 @@
 ### 从 Git 克隆（开发）
 
 ```bash
-git clone https://github.com/<owner>/simpread_paperize.git
+git clone https://github.com/xidiandaily/simpread_paperize.git
 cd simpread_paperize
 uv sync
 uv run playwright install chromium
@@ -25,7 +27,7 @@ uv run playwright install chromium
 ### 全局工具安装（推荐个人使用）
 
 ```bash
-uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"
+uv tool install "simpread_paperize @ git+https://github.com/xidiandaily/simpread_paperize.git"
 playwright install chromium
 ```
 

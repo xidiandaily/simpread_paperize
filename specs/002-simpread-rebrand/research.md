@@ -39,11 +39,11 @@
 
 ## 3. `uv tool install` 推荐命令模板（Git 源安装）
 
-**Decision**: README 与 [quickstart.md](./quickstart.md) 采用下列模板（`<owner>` 为占位符）：
+**Decision**: README 与 [quickstart.md](./quickstart.md) 采用下列 Git 安装 URL（远程：`xidiandaily/simpread_paperize`）：
 
 ```bash
 # 从 Git 安装到用户工具目录（PATH 可用）
-uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"
+uv tool install "simpread_paperize @ git+https://github.com/xidiandaily/simpread_paperize.git"
 
 # 一次性安装 Playwright Chromium（若尚未安装）
 playwright install chromium

@@ -28,6 +28,15 @@ Thumbs.db
 *.swp
 *.tmp
 
+# macOS AppleDouble / 资源分叉（勿提交）
+._*
+**/._*
+
+# 本地测试与发布产物
+test.pdf
+tags
+*.tar.gz
+
 # 测试与覆盖率
 .pytest_cache/
 .coverage

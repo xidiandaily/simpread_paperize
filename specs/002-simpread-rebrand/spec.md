@@ -68,7 +68,7 @@
 
 **Acceptance Scenarios**:
 
-1. **Given** 用户已安装 Playwright Chromium（按 README 一次性步骤），**When** 用户执行 `uv tool install "simpread_paperize @ git+https://github.com/<owner>/simpread_paperize.git"` 且安装成功，**Then** `sr_paperize` 出现在 PATH 且 `--help` 可用。
+1. **Given** 用户已安装 Playwright Chromium（按 README 一次性步骤），**When** 用户执行 `uv tool install "simpread_paperize @ git+https://github.com/xidiandaily/simpread_paperize.git"` 且安装成功，**Then** `sr_paperize` 出现在 PATH 且 `--help` 可用。
 2. **Given** 典型简悦离线 HTML fixture，**When** 用户执行 `sr_paperize input.html -o output.pdf`（或等效参数），**Then** 在指定路径生成可打开的 PDF，版式与 MVP 基线一致（smoke 级验证）。
 3. **Given** 用户尝试使用旧命令名，**When** 仅安装本特性交付物且未配置别名，**Then** 系统不提供 `paperize` 作为官方入口（无 `project.scripts` 中的 `paperize` 条目）。
 
@@ -94,7 +94,7 @@
 
 - 用户已全局安装旧包名 `paperize`：本特性不强制卸载；README 可简短说明新旧包/命令并存时的区别（可选一句，非阻塞）。
 - 从旧分支或 fork 合并时残留 `from paperize` import：验收以全仓 grep 与 pytest 为准，须为零残留。
-- `uv tool install` 的 Git URL 中 owner 为占位符：README 使用 `<owner>` 或等价占位，避免绑定单一账号。
+- 远程仓库已确定为 `xidiandaily/simpread_paperize`；README 与 quickstart 使用对应 HTTPS / `git+https` URL。
 - Windows / macOS 路径与中文文件名：重命名后行为须与 MVP 一致（继承宪法 III）。
 - 无 `LICENSE` 的历史仓库：本特性须新增 MIT `LICENSE` 并在 README 引用。
 
@@ -131,7 +131,7 @@
 
 ## Assumptions
 
-- 目标 Git 远程 URL 形态为 `https://github.com/<owner>/simpread_paperize.git`；具体 owner 由仓库维护者填写，规格不限定单一组织。
+- 目标 Git 远程为 `https://github.com/xidiandaily/simpread_paperize.git`（SSH：`git@github.com:xidiandaily/simpread_paperize.git`）。
 - 用户已安装 `uv` 与 Python >= 3.11，与宪法及 MVP 一致。
 - Playwright Chromium 仍由用户按 README 执行一次性 `playwright install chromium`（或项目文档约定的等效步骤）。
 - 本特性合并后，开发工作主要在 `002-simpread-rebrand` 特性分支进行，与 Speckit 分支约定一致。
